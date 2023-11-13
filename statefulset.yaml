@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mysql
+spec:
+  replicas: 1
+  serviceName: mysql-svc
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+        - name: mysql
+          image: mysql:latest  # Use the MySQL image
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: "PASSWORD"  # Set a secure password
+            - name: MYSQL_DATABASE
+              value: "YOUR_DATABASE_NAME"  # Set the desired database name
+            - name: MYSQL_USER
+              value: "USERNAME"  # Set the MySQL user
+            - name: MYSQL_PASSWORD
+              value: "PASSWORD"  # Set a secure password for the MySQL user
+          ports:
+            - name: mysql-port
+              protocol: TCP
+              containerPort: 3306
+          volumeMounts:
+            - name: mysql-data
+              mountPath: /var/lib/mysql  # Mount path for MySQL data
+  volumeClaimTemplates:
+    - metadata:
+        name: mysql-data
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        storageClassName: "standard"  # Set the storage class to "standard" for Google Disks
+        resources:
+          requests:
+            storage: 1Gi
