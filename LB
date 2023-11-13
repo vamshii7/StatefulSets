@@ -1,0 +1,23 @@
+# Load Balancing 
+
+Load balancing read operations in a StatefulSet with MySQL databases can be achieved by implementing several strategies. Here are some common approaches:
+
+ProxySQL or HAProxy:
+
+Use a dedicated database proxy such as ProxySQL or HAProxy in front of the MySQL StatefulSet.
+These proxies can distribute read queries to different database replicas based on load balancing algorithms.
+They often support features like connection pooling and read-write splitting.
+MySQL Router:
+
+MySQL Router is a lightweight middleware that can handle load balancing for MySQL.
+It can be deployed as a separate service or as a sidecar alongside your MySQL StatefulSet Pods.
+MySQL Router uses various algorithms for load balancing and can distribute read queries across multiple database replicas.
+Custom Application Logic:
+
+Implement custom logic in your application to distribute read queries among different database replicas.
+The application can maintain a list of available replicas and route read queries based on a load balancing strategy.
+MySQL Read-Only Replicas:
+
+Configure MySQL replicas as read-only replicas to offload read traffic from the primary database.
+Clients can connect to read-only replicas for read operations, while write operations are directed to the primary replica.
+MySQL driver configurations may be needed to specify which operations can be executed on read-only replicas.
