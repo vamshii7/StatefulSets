@@ -30,11 +30,11 @@ spec:
               protocol: TCP
               containerPort: 3306
           volumeMounts:
-            - name: mysql-data
+            - name: mysql-storage
               mountPath: /var/lib/mysql  # Mount path for MySQL data
   volumeClaimTemplates:
     - metadata:
-        name: mysql-data
+        name: mysql-storage
       spec:
         accessModes: ["ReadWriteOnce"]
         storageClassName: "standard"  # Set the storage class to "standard" for Google Disks
