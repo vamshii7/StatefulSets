@@ -171,8 +171,9 @@ spec:
       targetPort: mysql-port
   clusterIP: None
 ```
+This Service is associated with the StatefulSet, providing a stable DNS name (mysql-0.mysql-svc, mysql-1.mysql-svc, etc.) for each pod in the StatefulSet. The None clusterIP means that the Service does not provide a cluster-level IP address, and each pod gets its own DNS entry.
 
-Explicitly setting the value of the clusterIP field to None makes it a headless service. The spec.selector field matches the Pod labels to identify them as service endpoints. Now, apply the svc.yaml file to create a headless service.
+Explicitly setting the value of the clusterIP field to None makes it a headless service. Now, apply the svc.yaml file to create a headless service.
 
 ```
 kubectl apply -f svc.yaml
