@@ -1,7 +1,7 @@
 # StatefulSets
 StatefulSets in Kubernetes is a workload API that oversees the deployment and scaling of a set of Pods while preserving stickiness to persistent storage and guaranteeing order and uniqueness. Through StatefulSets, each Pod receives a stable, unique identifier, maintaining predictable and orderly deployment, which is indispensable for the seamless operation of stateful applications
 
-![image](https://github.com/vamshii7/StatefulSets/assets/48650579/b39fd6eb-1c62-4cd3-8c9c-2cc7dbf0ec74)
+[//]: <![image](https://github.com/vamshii7/StatefulSets/assets/48650579/b39fd6eb-1c62-4cd3-8c9c-2cc7dbf0ec74)>
 
 # Why StaefulSets ?
 StatefulSets in Kubernetes offer several features that make them well-suited for managing stateful applications. Here are some key features of StatefulSets:
